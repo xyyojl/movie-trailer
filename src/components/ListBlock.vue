@@ -4,8 +4,8 @@
       <h1 class="title">{{ title }}</h1>
       <i class="iconfont icon-right" @click="$emit('more')"></i>
     </div>
-    <!--  && !loading -->
-    <div v-if="movies.length" class="list">
+    <!--   -->
+    <div v-if="movies.length && !loading" class="list">
       <div
         v-for="item in movies"
         :key="item.id"
@@ -26,7 +26,7 @@
         class="item placeholder"
       ></div>
     </div>
-    <div v-if="!movies.length">
+    <div v-if="!movies.length && !loading">
       <img
         src="~@/assets/images/noresult.png"
         width="100"
@@ -34,7 +34,9 @@
         alt=""
       />
     </div>
-    <!-- loading -->
+    <div v-if="loading" class="loading-wrap">
+      <Loading />
+    </div>
   </section>
 </template>
 <script>
@@ -48,6 +50,10 @@ export default {
     title: {
       type: String,
       required: true
+    },
+    loading: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -86,4 +92,8 @@ export default {
         padding 10px 0
         text-ellipsis()
         font-size $font-size-base
+  .loading-wrap
+    display flex
+    align-items center
+    height 200px
 </style>

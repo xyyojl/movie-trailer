@@ -6,6 +6,7 @@
         :title="`正在热映(${playingCount})`"
         @more="goMore(0)"
         @select="selectItem"
+        :loading="loading"
       />
       <Spacing />
       <ListBlock
@@ -13,14 +14,13 @@
         :title="`即将上映(${commingCount})`"
         @more="goMore(1)"
         @select="selectItem"
+        :loading="loading"
       />
     </Scroll>
   </div>
 </template>
 
 <script>
-// 测试，拿数据
-// import axios from 'axios'
 import { useAxios } from '@/assets/js/request'
 import ListBlock from '@/components/ListBlock'
 export default {
@@ -46,18 +46,7 @@ export default {
   },
   methods: {
     getMovie () {
-      /* axios.get('/api/movie/hot').then((res) => {
-        if (res.data.code === 200) {
-          const { comming, playing } = res.data.data
-          this.commingMovies = comming.movies
-          this.commingCount = comming.count
-          this.playingMovies = playing.movies
-          this.playingCount = playing.count
-        }
-      }) */
-      // useAxios
-      this.loading = useAxios('/api/movie/hot', result => {
-        console.log(result)
+      const { loading } = useAxios('/api/movie/hot', result => {
         const { comming, playing } = result
         this.commingMovies = comming.movies
         this.commingCount = comming.count
@@ -65,7 +54,7 @@ export default {
         this.playingCount = playing.count
         this.loading = false
       })
-      console.log(this.loading)
+      this.loading = loading
     },
     goMore (type) {
       this.$router.push(`/list/${type}`)

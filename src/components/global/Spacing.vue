@@ -12,7 +12,7 @@ export default {
     bgColor: {
       type: String,
       default: '#f6f6f6'
-    },
+    }
   },
   computed: {
     style () {

@@ -20,7 +20,8 @@
 
 <script>
 // 测试，拿数据
-import axios from 'axios'
+// import axios from 'axios'
+import { useAxios } from '@/assets/js/request'
 import ListBlock from '@/components/ListBlock'
 export default {
   components: {
@@ -31,7 +32,8 @@ export default {
       commingMovies: [],
       commingCount: 0,
       playingMovies: [],
-      playingCount: 0
+      playingCount: 0,
+      loading: true
     }
   },
   computed: {
@@ -44,7 +46,7 @@ export default {
   },
   methods: {
     getMovie () {
-      axios.get('/api/movie/hot').then((res) => {
+      /* axios.get('/api/movie/hot').then((res) => {
         if (res.data.code === 200) {
           const { comming, playing } = res.data.data
           this.commingMovies = comming.movies
@@ -52,7 +54,18 @@ export default {
           this.playingMovies = playing.movies
           this.playingCount = playing.count
         }
+      }) */
+      // useAxios
+      this.loading = useAxios('/api/movie/hot', result => {
+        console.log(result)
+        const { comming, playing } = result
+        this.commingMovies = comming.movies
+        this.commingCount = comming.count
+        this.playingMovies = playing.movies
+        this.playingCount = playing.count
+        this.loading = false
       })
+      console.log(this.loading)
     },
     goMore (type) {
       this.$router.push(`/list/${type}`)

@@ -6,6 +6,7 @@
       @more="goMore(0)"
       @select="selectItem"
     />
+    <Spacing />
     <ListBlock
       :movies="commingMovies"
       :title="`即将上映(${commingCount})`"

@@ -26,7 +26,7 @@
         class="item placeholder"
       ></div>
     </div>
-    <div v-if="!movies.length && !loading">
+    <div v-if="!movies.length">
       <img
         src="~@/assets/images/noresult.png"
         width="100"

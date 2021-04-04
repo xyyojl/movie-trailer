@@ -1,18 +1,20 @@
 <template>
   <div class="recommend">
-    <ListBlock
-      :movies="playingMovies"
-      :title="`正在热映(${playingCount})`"
-      @more="goMore(0)"
-      @select="selectItem"
-    />
-    <Spacing />
-    <ListBlock
-      :movies="commingMovies"
-      :title="`即将上映(${commingCount})`"
-      @more="goMore(1)"
-      @select="selectItem"
-    />
+    <Scroll :data="movies">
+      <ListBlock
+        :movies="playingMovies"
+        :title="`正在热映(${playingCount})`"
+        @more="goMore(0)"
+        @select="selectItem"
+      />
+      <Spacing />
+      <ListBlock
+        :movies="commingMovies"
+        :title="`即将上映(${commingCount})`"
+        @more="goMore(1)"
+        @select="selectItem"
+      />
+    </Scroll>
   </div>
 </template>
 
@@ -62,4 +64,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped></style>
+<style lang="stylus" scoped>
+.recommend
+  height 100%
+</style>

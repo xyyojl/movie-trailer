@@ -1,12 +1,26 @@
 <template>
   <header class="back-header">
-    <i class="iconfont icon-left" @click="$router.back()"></i>
+    <i class="iconfont icon-left" @click="onBack"></i>
     <slot />
   </header>
 </template>
 <script>
 export default {
-  name: 'TheBackHeader'
+  name: 'TheBackHeader',
+  props: {
+    back: {
+      type: Function
+    }
+  },
+  methods: {
+    onBack () {
+      if (typeof this.back === 'function') {
+        this.back()
+        return
+      }
+      this.$router.back()
+    }
+  }
 }
 </script>
 

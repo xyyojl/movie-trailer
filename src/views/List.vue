@@ -1,7 +1,7 @@
 <template>
   <Transition name="fade">
       <div class="page-list">
-        <TheBackHeader>
+        <TheBackHeader :back="onBack">
           <div class="tabs">
             <div
               v-for="(name, index) in tabs"
@@ -84,7 +84,6 @@ export default {
       })
         .then(res => {
           console.log(!this.movieList.length)
-          // debugger
           const result = res.data.data
           this.movieList = this.movieList.concat(result.list)
           this.count = result.total
@@ -102,6 +101,9 @@ export default {
       this.page += 1
       this.pullUpLoading = true
       this.getMovieList()
+    },
+    onBack () {
+      this.$router.replace('/recommend')
     }
   }
 }

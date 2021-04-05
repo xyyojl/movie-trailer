@@ -14,7 +14,7 @@
             </div>
           </div>
         </TheBackHeader>
-        <div class="content-wrapper">
+        <div class="content-wrapper" v-show="movieList.length">
           <Scroll :data="movieList" :pull-up-load="true" @pulling-up="loadMore">
             <Card
               v-for="movie in movieList"
@@ -28,9 +28,7 @@
             </div>
           </Scroll>
         </div>
-        <div class="loading-wrap" v-show="!movieList.length">
-          <Loading/>
-        </div>
+        <Loading v-show="!movieList.length" height="80%" />
       </div>
   </Transition>
 </template>
@@ -126,21 +124,11 @@ export default {
       &.active
         background $color-theme
   .content-wrapper
-    // height calc(100% - 56px)
-    position: absolute;
-    top: 0
-    bottom: 0;
-    width: 100%;
+    height: calc(100% - 56px);
     .pull-up-wrap
       height 30px
       line-height 30px
       text-align center
       font-size $font-size-small
       color $color-text-regular
-  .loading-wrap
-    display flex
-    align-items center
-    height 100%
-    justify-content: normal;
-    flex-wrap: wrap;
 </style>

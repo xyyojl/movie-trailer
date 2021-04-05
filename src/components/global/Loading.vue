@@ -1,22 +1,31 @@
 <template>
-  <div class="spinner">
-    <div class="rect rect1"></div>
-    <div class="rect rect2"></div>
-    <div class="rect rect3"></div>
-    <div class="rect rect4"></div>
-    <div class="rect rect5"></div>
+  <div class="loading-wrap" :style="{ height: height}">
+    <div class="spinner">
+      <div class="rect rect1"></div>
+      <div class="rect rect2"></div>
+      <div class="rect rect3"></div>
+      <div class="rect rect4"></div>
+      <div class="rect rect5"></div>
+    </div>
   </div>
 </template>
 <script>
 export default {
-  name: 'Loading'
+  name: 'Loading',
+  props: {
+    height: {
+      type: String,
+      default: '100%'
+    }
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
+.loading-wrap
+  layout-flex(center)
 .spinner
-  display flex
-  justify-content center
+  layout-flex(center, center)
   width 100%
   height 40px
   .rect

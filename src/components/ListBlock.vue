@@ -34,9 +34,7 @@
         alt=""
       />
     </div>
-    <div v-if="loading" class="loading-wrap">
-      <Loading />
-    </div>
+    <Loading v-if="loading" height="200px" />
   </section>
 </template>
 <script>
@@ -92,8 +90,4 @@ export default {
         padding 10px 0
         text-ellipsis()
         font-size $font-size-base
-  .loading-wrap
-    display flex
-    align-items center
-    height 200px
 </style>

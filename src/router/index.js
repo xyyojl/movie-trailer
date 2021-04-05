@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 const Recommend = () => import('@/views/Recommend')
+const List = () => import('@/views/List')
 
 Vue.use(VueRouter)
 
@@ -13,6 +14,11 @@ const routes = [
     path: '/recommend',
     name: 'Recommend',
     component: Recommend
+  },
+  {
+    path: '/list/:type',
+    name: 'List',
+    component: List
   }
 ]
 

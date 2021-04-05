@@ -83,7 +83,6 @@ export default {
         params
       })
         .then(res => {
-          console.log(!this.movieList.length)
           const result = res.data.data
           this.movieList = this.movieList.concat(result.list)
           this.count = result.total
@@ -127,7 +126,11 @@ export default {
       &.active
         background $color-theme
   .content-wrapper
-    height calc(100% - 56px)
+    // height calc(100% - 56px)
+    position: absolute;
+    top: 0
+    bottom: 0;
+    width: 100%;
     .pull-up-wrap
       height 30px
       line-height 30px
@@ -138,4 +141,6 @@ export default {
     display flex
     align-items center
     height 100%
+    justify-content: normal;
+    flex-wrap: wrap;
 </style>

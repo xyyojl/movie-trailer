@@ -2,9 +2,7 @@
   <div id="app">
     <TheHeader></TheHeader>
     <div class="layout-content">
-      <keepAlive :exclude="exclude">
-        <RouterView/>
-      </keepAlive>
+      <RouterView/>
     </div>
   </div>
 </template>
@@ -17,9 +15,7 @@ export default {
     TheHeader
   },
   data () {
-    return {
-      exclude: ['User', 'Movie']
-    }
+    return {}
   }
 }
 </script>

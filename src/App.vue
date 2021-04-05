@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <TheHeader></TheHeader>
-    <div class="content">
+    <div class="layout-content">
       <keepAlive :exclude="exclude">
         <RouterView/>
       </keepAlive>
@@ -25,9 +25,13 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.content
-  position absolute
-  top 56px
-  bottom 0
-  width 100%
+#app
+  height 100vh
+  .layout-content
+    position absolute
+    top $headerHeight
+    bottom 0
+    width 100%
+    > div
+      height 100%
 </style>

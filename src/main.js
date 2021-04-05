@@ -4,9 +4,11 @@ import router from './router'
 import store from './store'
 import globalComponents from '@/assets/js/components'
 import VueLazyload from 'vue-lazyload'
+import axios from 'axios'
 
 import '@/assets/styles/reset.styl'
 
+Vue.prototype.$axios = axios
 Vue.use(globalComponents) // 初始化全局组件
 // 使用 vue-lazyload 懒加载
 Vue.use(VueLazyload, {

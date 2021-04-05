@@ -4,7 +4,7 @@
       <ListBlock
         :movies="playingMovies"
         :title="`正在热映(${playingCount})`"
-        @more="goMore(0)"
+        @more="goMore(1)"
         @select="selectItem"
         :loading="loading"
       />
@@ -12,7 +12,7 @@
       <ListBlock
         :movies="commingMovies"
         :title="`即将上映(${commingCount})`"
-        @more="goMore(1)"
+        @more="goMore(0)"
         @select="selectItem"
         :loading="loading"
       />

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 const Recommend = () => import('@/views/Recommend')
 const List = () => import('@/views/List')
 const Movie = () => import('@/views/Movie')
+const Rank = () => import('@/views/Rank')
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,11 @@ const routes = [
     path: '/movie/:id',
     name: 'Movie',
     component: Movie
+  },
+  {
+    path: '/rank',
+    name: 'Rank',
+    component: Rank
   }
 ]
 

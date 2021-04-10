@@ -24,6 +24,12 @@
             :status="params.status"
             @change="changeStatus"
           />
+          <SizerRate
+            v-if="activeTabIdx === 2"
+            ref="sizerRate"
+            v-model="params.rate"
+            @change="getMovies"
+          />
         </div>
         <div class="sizer-mask" v-show="activeTabIdx !== -1" @click="closeTab"></div>
     </div>
@@ -39,10 +45,12 @@
 <script>
 import SizerCategory from '@/components/SizerCategory'
 import SizerStatus from '@/components/SizerStatus'
+import SizerRate from '@/components/SizerRate'
 export default {
   components: {
     SizerCategory,
-    SizerStatus
+    SizerStatus,
+    SizerRate
   },
   data () {
     return {

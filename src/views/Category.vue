@@ -19,6 +19,11 @@
             v-model="params.categories"
             @change="getMovies"
           />
+          <SizerStatus
+            v-show="activeTabIdx === 1"
+            :status="params.status"
+            @change="changeStatus"
+          />
         </div>
         <div class="sizer-mask" v-show="activeTabIdx !== -1" @click="closeTab"></div>
     </div>
@@ -33,9 +38,11 @@
 
 <script>
 import SizerCategory from '@/components/SizerCategory'
+import SizerStatus from '@/components/SizerStatus'
 export default {
   components: {
-    SizerCategory
+    SizerCategory,
+    SizerStatus
   },
   data () {
     return {
@@ -93,6 +100,11 @@ export default {
     },
     closeTab () {
       this.activeTabIdx = -1
+    },
+    changeStatus ({ name, value }) {
+      this.cats[1] = name
+      this.params.status = value
+      this.getMovies()
     }
   }
 }

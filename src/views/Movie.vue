@@ -33,7 +33,7 @@
                 </div>
                 <p class="pubdate" v-else>
                   <span>上映时间：</span>
-                  <span>{{ item.pubdate }}要修改</span>
+                  <span>{{ item.pubdate.replace('(中国大陆)', '') }}</span>
                 </p>
                 <p>类型：动作/科幻/冒险</p>
               </div>
@@ -50,13 +50,13 @@
           </div>
           <div v-if="movie.title" class="desc">
             <div class="descript">
-              <div v-if="movie.rate !== 0" class="star item">
+              <div v-if="movie.isPlay === '1'" class="star item">
                 <span class="name">评分：</span>
                 <span class="text">{{ movie.rate }}</span>
               </div>
               <div v-else class="pubdate item">
                 <span class="name">上映时间：</span>
-                <span class="text">{{movie.pubdate}}</span>
+                <span class="text">{{movie.pubdate.replace('(中国大陆)', '')}}</span>
               </div>
               <div class="author item">
                 <span class="name">导演：</span>

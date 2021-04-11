@@ -4,8 +4,6 @@ import searchCache from '@/assets/js/searchCache'
 
 Vue.use(Vuex)
 
-console.log('searchCache', searchCache)
-
 export default new Vuex.Store({
   state: {
     searchHistory: searchCache.getAll()

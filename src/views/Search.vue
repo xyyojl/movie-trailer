@@ -18,7 +18,7 @@
       <div class="search-history-wrapper" v-if="searchHistory.length">
         <h1 class="title">
           <span>历史</span>
-          <i class="iconfont icon-clear"></i>
+          <i class="iconfont icon-clear" @click="showConfirm"></i>
         </h1>
         <div class="list">
             <div v-for="item in searchHistory" :key="item" class="item">
@@ -35,6 +35,7 @@
       </Scroll>
       <NoResult v-show="!movieList.length" />
     </div>
+    <Confirm ref="confirm" content="是否删除所有搜索历史" @confirm="clearSearchHistory" />
   </div>
 </template>
 
@@ -95,6 +96,9 @@ export default {
     },
     selectItem (id) {
       this.$router.push(`/movie/${id}`)
+    },
+    showConfirm () {
+      this.$refs.confirm.show()
     }
   }
 }

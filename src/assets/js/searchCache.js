@@ -34,7 +34,6 @@ class SearchCache {
 
   addOne (query) {
     const list = [...this.searchList]
-    console.log('list', list)
     const index = list.findIndex(s => s === query)
     if (index > -1) {
       list.splice(index, 1)

@@ -61,6 +61,7 @@ export default {
         color $color-text-secondary
         box-sizing border-box
   .user
+    opacity 0
     width 15%
     text-align center
     .icon-user

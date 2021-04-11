@@ -5,6 +5,7 @@ const List = () => import('@/views/List')
 const Movie = () => import('@/views/Movie')
 const Rank = () => import('@/views/Rank')
 const Category = () => import('@/views/Category')
+const Search = () => import('@/views/Search')
 
 Vue.use(VueRouter)
 
@@ -37,6 +38,11 @@ const routes = [
     path: '/category',
     name: 'Category',
     component: Category
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    component: Search
   }
 ]
 

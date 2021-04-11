@@ -35,7 +35,7 @@
     </div>
     <div class="movie-list" v-show="!loading">
       <Scroll v-show="movieList.length" :data="movieList">
-        <Card v-for="movie in movieList" :key="movie.id" :movie="movie" />
+        <Card v-for="movie in movieList" :key="movie.id" :movie="movie" @select="selectItem" />
       </Scroll>
     </div>
     <Loading v-show="loading" height="80%" />
@@ -113,6 +113,9 @@ export default {
       this.cats[1] = name
       this.params.status = value
       this.getMovies()
+    },
+    selectItem (id) {
+      this.$router.push(`/movie/${id}`)
     }
   }
 }

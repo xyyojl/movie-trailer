@@ -22,7 +22,7 @@
               v-for="item in relativeMovies"
               :key="item.id"
               class="item"
-              @click="goToDetail(item.id)"
+              @click="goToDetail(item)"
             >
               <img v-lazy="item.poster" width="56" height="80" alt="">
               <div class="desc">
@@ -74,7 +74,7 @@
               </div>
             </div>
             <div class="casts">
-              <div class="cast" v-for="item in movie.casts" :key="item.name">
+              <div class="cast" v-for="item in movie.casts" :key="item.id">
                 <img v-lazy="item.avatar" class="img" alt="">
                 <h3 class="name">{{ item.name }}</h3>
               </div>
@@ -119,6 +119,10 @@ export default {
   created () {
     this.getDetail()
   },
+  beforeRouteUpdate  (to, from, next) {
+    next()
+    this.getDetail()
+  },
   methods: {
     getDetail () {
       const { id } = this.$route.params
@@ -140,6 +144,9 @@ export default {
     },
     toggleLayer () {
       this.isShow = !this.isShow
+    },
+    goToDetail (item) {
+      this.$router.replace(`/movie/${item.id}`)
     }
   }
 }

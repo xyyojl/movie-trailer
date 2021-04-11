@@ -33,6 +33,7 @@
       <Scroll :data="movieList" v-show="movieList.length">
         <Card v-for="movie in movieList" :key="movie.id" :movie="movie" @select="selectItem" />
       </Scroll>
+      <NoResult v-show="!movieList.length" />
     </div>
   </div>
 </template>

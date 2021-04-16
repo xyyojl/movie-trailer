@@ -25,10 +25,9 @@ export default {
   },
   methods: {
     getMovieList () {
-      this.$axios.get('/api/movie/rank')
+      this.$request.get('/api/movie/rank')
         .then(res => {
-          const result = res.data.data
-          this.movieList = this.movieList.concat(result)
+          this.movieList = this.movieList.concat(res)
         })
     },
     gotoDetail (id) {

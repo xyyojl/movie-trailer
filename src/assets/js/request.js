@@ -1,6 +1,47 @@
 import axios from 'axios'
 import router from '@/router'
 
+function handleError (error) {
+  console.info('>>>>>', error)
+  return Promise.reject(error)
+}
+
+// 尝试封装 axios
+// 根据开发环境和生产环境使用不同的 baseURL
+const baseURL = '/'
+const instance = axios.create({
+  baseURL: baseURL,
+  timeout: 600000,
+  withCredentials: false
+})
+// http request 拦截器
+instance.interceptors.request.use(
+  config => {
+    console.log('请求的 config', config)
+    return config
+  },
+  error => {
+    return handleError(error)
+  }
+)
+
+// http response 拦截器
+instance.interceptors.response.use(
+  response => {
+    const status = response.data.code
+    // 拦截响应，做统一处理
+    if (status === 200) {
+      console.log('', response.data.data)
+      return response.data.data
+    }
+  },
+  error => {
+    return handleError(error)
+  }
+)
+
+export default instance
+
 export function useAxios (url, config, callback) {
   const loading = true
   let result = null

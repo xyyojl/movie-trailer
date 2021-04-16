@@ -77,13 +77,12 @@ export default {
         pageSize: 10,
         status: this.$route.params.type
       }
-      this.$axios.get('/api/movie/status', {
+      this.$request.get('/api/movie/status', {
         params
       })
         .then(res => {
-          const result = res.data.data
-          this.movieList = this.movieList.concat(result.list)
-          this.count = result.total
+          this.movieList = this.movieList.concat(res.list)
+          this.count = res.total
           this.$nextTick(() => {
             this.pullUpLoading = false
           })

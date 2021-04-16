@@ -126,10 +126,9 @@ export default {
   methods: {
     getDetail () {
       const { id } = this.$route.params
-      this.$axios.get(`/api/movie/${id}`).then(res => {
-        const result = res.data.data
-        this.movie = result.movie
-        this.relativeMovies = result.relativeMovies
+      this.$request.get(`/api/movie/${id}`).then(res => {
+        this.movie = res.movie
+        this.relativeMovies = res.relativeMovies
         this.initPlayer()
       })
     },

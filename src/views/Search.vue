@@ -65,10 +65,9 @@ export default {
       if (!query.trim()) return
       const params = { keyword: query }
       this.timer = setTimeout(() => {
-        this.$axios.get('api/movie/search', { params })
+        this.$request.get('api/movie/search', { params })
           .then(res => {
-            const result = res.data.data
-            this.movieList = result
+            this.movieList = res
             this.isShow = true
           })
         this.saveSearchHistory(query)
@@ -84,10 +83,9 @@ export default {
       'clearSearchHistory'
     ]),
     getHotSearchKeys () {
-      this.$axios.get('/api/keyword')
+      this.$request.get('/api/keyword')
         .then(res => {
-          const result = res.data.data
-          this.hotSearchKeys = result
+          this.hotSearchKeys = res
         })
     },
     addQuery (query) {

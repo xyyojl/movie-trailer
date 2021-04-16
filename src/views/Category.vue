@@ -80,10 +80,9 @@ export default {
         status: status,
         rate: status !== '0' ? JSON.stringify(rate) : undefined
       }
-      this.$axios.get('/api/movie', { params })
+      this.$request.get('/api/movie', { params })
         .then(res => {
-          const result = res.data.data
-          this.movieList = result
+          this.movieList = res
           this.loading = false
         })
     },

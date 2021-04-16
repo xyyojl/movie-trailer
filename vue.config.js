@@ -1,4 +1,5 @@
 module.exports = {
+    publicPath: '/movie-trailer/',
     chainWebpack: config => {
         config.devServer.proxy({
             "/api": {

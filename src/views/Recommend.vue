@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import { useAxios } from '@/assets/js/request'
 import ListBlock from '@/components/ListBlock'
 export default {
   components: {
@@ -46,15 +45,15 @@ export default {
   },
   methods: {
     getMovie () {
-      const { loading } = useAxios('/api/movie/hot', result => {
-        const { comming, playing } = result
-        this.commingMovies = comming.movies
-        this.commingCount = comming.count
-        this.playingMovies = playing.movies
-        this.playingCount = playing.count
-        this.loading = false
-      })
-      this.loading = loading
+      this.$request('api/movie/hot')
+        .then(res => {
+          const { comming, playing } = res
+          this.commingMovies = comming.movies
+          this.commingCount = comming.count
+          this.playingMovies = playing.movies
+          this.playingCount = playing.count
+          this.loading = false
+        })
     },
     goMore (type) {
       this.$router.push(`/list/${type}`)

@@ -38,10 +38,9 @@ export default {
   },
   methods: {
     getCategories () {
-      this.$axios.get('/api/category')
+      this.$request.get('/api/category')
         .then(res => {
-          const result = res.data.data
-          this.categoryList = result
+          this.categoryList = res
         })
     },
     confirm () {

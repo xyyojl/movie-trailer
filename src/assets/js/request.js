@@ -6,9 +6,10 @@ function handleError (error) {
   return Promise.reject(error)
 }
 
-// 尝试封装 axios
 // 根据开发环境和生产环境使用不同的 baseURL
-const baseURL = '/'
+// const baseURL = '/'
+// 通过 Node 中间件代理，实现跨域请求
+const baseURL = 'http://47.106.196.184:3000'
 const instance = axios.create({
   baseURL: baseURL,
   timeout: 600000,
